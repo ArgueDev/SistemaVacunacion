@@ -29,7 +29,7 @@ CREATE TABLE `enfermera` (
   `licencia` varchar(50) NOT NULL,
   `especialidad` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,6 +38,7 @@ CREATE TABLE `enfermera` (
 
 LOCK TABLES `enfermera` WRITE;
 /*!40000 ALTER TABLE `enfermera` DISABLE KEYS */;
+INSERT INTO `enfermera` VALUES (2,'Maria','Zambrano','Virus','Inyecciones'),(3,'Lorena','Zabala','Dolores','General');
 /*!40000 ALTER TABLE `enfermera` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,11 +53,12 @@ CREATE TABLE `paciente` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   `apellido` varchar(50) NOT NULL,
+  `cedula` varchar(50) DEFAULT NULL,
   `fechaNacimiento` date NOT NULL,
   `direccion` varchar(100) NOT NULL,
   `telefono` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +67,7 @@ CREATE TABLE `paciente` (
 
 LOCK TABLES `paciente` WRITE;
 /*!40000 ALTER TABLE `paciente` DISABLE KEYS */;
-INSERT INTO `paciente` VALUES (1,'Christian','Arguello','1997-09-24','Bellavista','0969536442');
+INSERT INTO `paciente` VALUES (1,'Christian','Arguello','0123456789','1997-09-24','Bellavista','0969536442'),(4,'Mario','Mera','0987456321','2000-05-27','Los Angles','0992430599');
 /*!40000 ALTER TABLE `paciente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,7 +84,7 @@ CREATE TABLE `vacuna` (
   `tipo` varchar(50) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,6 +93,7 @@ CREATE TABLE `vacuna` (
 
 LOCK TABLES `vacuna` WRITE;
 /*!40000 ALTER TABLE `vacuna` DISABLE KEYS */;
+INSERT INTO `vacuna` VALUES (2,'PARACETAMOL','Fiebres','Cura el malestar'),(3,'COVID','Virus','Contrataca el coronavirus');
 /*!40000 ALTER TABLE `vacuna` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,7 +118,7 @@ CREATE TABLE `vacunacion` (
   CONSTRAINT `vacunacion_ibfk_1` FOREIGN KEY (`vacuna_id`) REFERENCES `vacuna` (`id`),
   CONSTRAINT `vacunacion_ibfk_2` FOREIGN KEY (`paciente_id`) REFERENCES `paciente` (`id`),
   CONSTRAINT `vacunacion_ibfk_3` FOREIGN KEY (`enfermera_id`) REFERENCES `enfermera` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,6 +127,7 @@ CREATE TABLE `vacunacion` (
 
 LOCK TABLES `vacunacion` WRITE;
 /*!40000 ALTER TABLE `vacunacion` DISABLE KEYS */;
+INSERT INTO `vacunacion` VALUES (1,'2024-06-24',3,2,1,3);
 /*!40000 ALTER TABLE `vacunacion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -136,4 +140,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-25 17:48:02
+-- Dump completed on 2024-11-26  2:06:37
