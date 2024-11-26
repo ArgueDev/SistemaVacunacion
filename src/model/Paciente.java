@@ -6,14 +6,16 @@ public class Paciente {
     private int id;
     private String nombre;
     private String apellido;
+    private String cedula;
     private Date fechaNacimiento;
     private String direccion;
     private String telefono;
 
-    public Paciente(int id, String nombre, String apellido, Date fechaNacimiento, String direccion, String telefono) {
+    public Paciente(int id, String nombre, String apellido, String cedula, Date fechaNacimiento, String direccion, String telefono) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.cedula = cedula;
         this.fechaNacimiento = fechaNacimiento;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -41,6 +43,14 @@ public class Paciente {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
     public Date getFechaNacimiento() {

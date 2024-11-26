@@ -68,7 +68,16 @@ public class Main {
                     EnfermeraView enfermeraView = new EnfermeraView(opcion4);
                     break;
                 case 4:
-                    //TODO: Listar las vacunaciones, El tipo de vacuna que se puso el paciente por la enfermera
+                    System.out.println("\n--- Registro de Vacunaciones ---");
+                    System.out.println("1. Registro de Vacunacion");
+                    System.out.println("2. Lista de Vacunados");
+                    System.out.println("3. Eliminar Vacunado");
+                    System.out.println("4. Salir");
+                    System.out.print("Seleccione una opción: ");
+
+                    int opcion5 = sc.nextInt();
+                    sc.nextLine();
+                    VacunacionView vacunacionView = new VacunacionView(opcion5);
                     break;
                 case 5:
                     System.out.println("Saliendo...");

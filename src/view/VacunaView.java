@@ -20,8 +20,10 @@ public class VacunaView {
                 break;
             case 2:
                 agregarVacuna();
+                break;
             case 3:
                 eliminarVacuna();
+                break;
             case 4:
                 System.out.println("Saliendo...");
                 break;

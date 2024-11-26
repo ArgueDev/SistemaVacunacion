@@ -21,6 +21,7 @@ public class PacienteServices {
                         rs.getInt("id"),
                         rs.getString("nombre"),
                         rs.getString("apellido"),
+                        rs.getString("cedula"),
                         rs.getDate("fechaNacimiento"),
                         rs.getString("direccion"),
                         rs.getString("telefono")
@@ -33,19 +34,20 @@ public class PacienteServices {
     }
 
     public void agregarPaciente(Paciente paciente) {
-        String query = "INSERT INTO paciente (nombre, apellido, fechaNacimiento, direccion, telefono) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO paciente (nombre, apellido, cedula, fechaNacimiento, direccion, telefono) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DataBaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
             pstmt.setString(1, paciente.getNombre());
             pstmt.setString(2, paciente.getApellido());
+            pstmt.setString(3, paciente.getCedula());
             // Conversión de fecha
             java.util.Date fechaNacimiento = paciente.getFechaNacimiento();
             java.sql.Date sqlFechaNacimiento = new java.sql.Date(fechaNacimiento.getTime());
-            pstmt.setDate(3, sqlFechaNacimiento);
-            pstmt.setString(4, paciente.getDireccion());
-            pstmt.setString(5, paciente.getTelefono());
+            pstmt.setDate(4, sqlFechaNacimiento);
+            pstmt.setString(5, paciente.getDireccion());
+            pstmt.setString(6, paciente.getTelefono());
 
 
             pstmt.executeUpdate();
@@ -55,8 +57,8 @@ public class PacienteServices {
         }
     }
 
-    public void eliminarPacientePorTelefono(String telefono) {
-        String query = "DELETE FROM paciente WHERE telefono = ?";
+    public void eliminarPacientePorCedula(String telefono) {
+        String query = "DELETE FROM paciente WHERE cedula = ?";
 
         try (Connection conn = DataBaseConnection.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(query)) {

@@ -40,6 +40,7 @@ public class PacienteView {
             System.out.println("ID: " + paciente.getId()
                     + ", Nombre: " + paciente.getNombre()
                     + ", Apellido: " + paciente.getApellido()
+                    + ", Cedula: " + paciente.getCedula()
                     + ", FechaNacimiento: " + paciente.getFechaNacimiento()
                     + ", Direccion: " + paciente.getDireccion()
                     + ", Telefono: " + paciente.getTelefono());
@@ -51,6 +52,8 @@ public class PacienteView {
         String nombre = sc.nextLine();
         System.out.print("Ingrese el apellido del paciente: ");
         String apellido = sc.nextLine();
+        System.out.print("Ingresa la cedula del paciente: ");
+        String cedula = sc.nextLine();
 
         java.sql.Date sqlFechaNacimiento = null;
         System.out.print("Ingrese la fecha de nacimiento (yyyy-MM-dd): ");
@@ -69,14 +72,14 @@ public class PacienteView {
         System.out.print("Ingrese el teléfono: ");
         String telefono = sc.nextLine();
 
-        Paciente nuevoPaciente = new Paciente(0, nombre, apellido, sqlFechaNacimiento, direccion, telefono);
+        Paciente nuevoPaciente = new Paciente(0, nombre, apellido, cedula, sqlFechaNacimiento, direccion, telefono);
         pacienteServices.agregarPaciente(nuevoPaciente);
         System.out.println("Paciente agregado correctamente.");
     }
 
     private void eliminarPaciente() {
-        System.out.print("Ingrese el telefono del paciente: ");
-        String telefono = sc.nextLine();
-        pacienteServices.eliminarPacientePorTelefono(telefono);
+        System.out.print("Ingrese la cedula del paciente: ");
+        String cedula = sc.nextLine();
+        pacienteServices.eliminarPacientePorCedula(cedula);
     }
 }
